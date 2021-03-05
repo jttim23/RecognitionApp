@@ -16,10 +16,9 @@ public class FirstTokenStrategyTests {
         strategy = new FirstTokenStrategy();
         names = new ArrayList<>();
     }
-
     @Test
     void shouldResponseInconclusiveWhenNoTokensMatches() throws IOException {
-
+        names.add("Rokita");
         Assertions.assertEquals("INCONCLUSIVE", strategy.determineGender(names));
     }
 

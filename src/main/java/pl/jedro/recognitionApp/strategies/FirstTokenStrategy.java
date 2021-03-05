@@ -21,8 +21,11 @@ public class FirstTokenStrategy implements RecognitionStrategy {
         return "INCONCLUSIVE";
     }
 
+//    private boolean nameMatchesToken(List<String> names, GenderReader reader) throws IOException {
+//        return reader.getAllTokens().stream().anyMatch(token -> token.getName().equals(names.get(0)));
+//    }
     private boolean nameMatchesToken(List<String> names, GenderReader reader) throws IOException {
-        return reader.getAllTokens().stream().anyMatch(token -> token.getName().equals(names.get(0)));
+       return reader.getStreamTokens().anyMatch(token ->  token.getName().equals(names.get(0)));
     }
 
 }

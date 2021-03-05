@@ -8,18 +8,29 @@ import pl.jedro.recognitionApp.strategies.FirstTokenStrategy;
 import java.io.IOException;
 
 public class GenderRecognitionServiceTests {
-    private GenderRecognitionService service;
+    private BasicGenderRecognitionService service;
 
     @BeforeEach
     void setUp() {
         FirstTokenStrategy strategy = new FirstTokenStrategy();
-        service = new GenderRecognitionService(strategy);
+        service = new BasicGenderRecognitionService(strategy);
     }
+    @Test
+    void shouldThrowExceptionWhenNameIsBlank() {
+        String name="";
+        Assertions.assertThrows(IllegalArgumentException.class,() -> service.determineGender(name));
 
+    }
+    @Test
+    void shouldThrowExceptionWhenNameIsOnlyWhiteSpaces() {
+        String name="     ";
+        Assertions.assertThrows(IllegalArgumentException.class,() -> service.determineGender(name));
+
+    }
     @Test
     void shouldRecognizeFemale() throws IOException {
 
-        String name = " Anna Jan    Zbigniew";
+        String name = " Anna  Jan   Zbigniew";
         Assertions.assertEquals("FEMALE", service.determineGender(name));
     }
 

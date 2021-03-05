@@ -7,6 +7,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 
 public class GenderReader {
@@ -25,5 +26,13 @@ public class GenderReader {
         }
         if (list.isEmpty()) throw new IOException();
         return list;
+    }
+    public Stream<GenderToken> getStreamTokens() throws IOException {
+
+        return bufferedReader.lines().map(this::mapper);
+    }
+
+    private GenderToken mapper(String s) {
+        return new GenderToken(s);
     }
 }
