@@ -1,4 +1,4 @@
-package pl.jedro.recognitionApp.utils;
+package pl.jedro.recognitionApp.model;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
