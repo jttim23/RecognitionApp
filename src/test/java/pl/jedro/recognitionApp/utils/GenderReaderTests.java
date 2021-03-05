@@ -28,4 +28,8 @@ public class GenderReaderTests {
     void shouldReturnAtLeastOneGenderToken() throws IOException {
         Assertions.assertNotEquals(null,reader.getGenderToken(femaleTokens));
     }
+    @Test
+    void shouldReturnAllGenderTokens() throws IOException {
+        Assertions.assertEquals(3, reader.getAllTokens(femaleTokens).size());
+    }
 }
