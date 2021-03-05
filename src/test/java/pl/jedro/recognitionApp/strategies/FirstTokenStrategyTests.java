@@ -1,28 +1,39 @@
 package pl.jedro.recognitionApp.strategies;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class FirstTokenStrategyTests {
+    private FirstTokenStrategy strategy;
+    private ArrayList<String> names;
+
+    @BeforeEach
+    void setUp() {
+        strategy = new FirstTokenStrategy();
+        names = new ArrayList<>();
+    }
 
     @Test
     void shouldResponseInconclusiveWhenNoTokensMatches() throws IOException {
-        FirstTokenStrategy strategy = new FirstTokenStrategy();
-        Assertions.assertEquals("INCONCLUSIVE", strategy.getResponse(""));
+
+        Assertions.assertEquals("INCONCLUSIVE", strategy.determineGender(names));
     }
+
     @Test
     void shouldResponseMaleIfMaleTokenMatches() throws IOException {
-        FirstTokenStrategy strategy = new FirstTokenStrategy();
-        String name = "Jan";
-        Assertions.assertEquals("MALE", strategy.getResponse(name));
+
+        names.add("Jan");
+        Assertions.assertEquals("MALE", strategy.determineGender(names));
     }
+
     @Test
     void shouldResponseFemaleIfFemaleTokenMatches() throws IOException {
-        FirstTokenStrategy strategy = new FirstTokenStrategy();
-        String name = "Maria";
-        Assertions.assertEquals("FEMALE", strategy.getResponse(name));
+        names.add("Maria");
+        Assertions.assertEquals("FEMALE", strategy.determineGender(names));
     }
 }
 

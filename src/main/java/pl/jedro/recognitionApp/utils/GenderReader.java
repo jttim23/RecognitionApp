@@ -7,9 +7,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-@AllArgsConstructor
+
+
 public class GenderReader {
     private BufferedReader bufferedReader;
+
+    public GenderReader(BufferedReader bufferedReader) {
+        this.bufferedReader = bufferedReader;
+    }
 
     public List<GenderToken> getAllTokens() throws IOException {
         List<GenderToken> list = new ArrayList<>();
