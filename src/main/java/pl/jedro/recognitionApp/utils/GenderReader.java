@@ -8,12 +8,9 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class GenderReader {
-    public GenderToken getOneToken() throws IOException {
-        return getGenderToken();
-    }
 
-    private GenderToken getGenderToken() throws IOException {
-        BufferedReader bufferedReader = new BufferedReader(new FileReader( "src/main/resources/static/femaleTokens.txt"));
+    public GenderToken getGenderToken(FileReader fileReader) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
         String line = bufferedReader.readLine();
         if (line == null) throw new IOException();
         return new GenderToken(line);
