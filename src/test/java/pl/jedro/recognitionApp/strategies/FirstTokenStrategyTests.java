@@ -3,6 +3,7 @@ package pl.jedro.recognitionApp.strategies;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.jedro.recognitionApp.model.Gender;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,20 +20,20 @@ public class FirstTokenStrategyTests {
     @Test
     void shouldResponseInconclusiveWhenNoTokensMatches() throws IOException {
         names.add("Rokita");
-        Assertions.assertEquals("INCONCLUSIVE", strategy.determineGender(names));
+        Assertions.assertEquals(Gender.INCONCLUSIVE, strategy.determineGender(names));
     }
 
     @Test
     void shouldResponseMaleIfMaleTokenMatches() throws IOException {
 
         names.add("Jan");
-        Assertions.assertEquals("MALE", strategy.determineGender(names));
+        Assertions.assertEquals(Gender.MALE, strategy.determineGender(names));
     }
 
     @Test
     void shouldResponseFemaleIfFemaleTokenMatches() throws IOException {
         names.add("Maria");
-        Assertions.assertEquals("FEMALE", strategy.determineGender(names));
+        Assertions.assertEquals(Gender.FEMALE, strategy.determineGender(names));
     }
 }
 

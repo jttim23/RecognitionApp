@@ -14,7 +14,7 @@ public class BasicGenderRecognitionService implements GenderRecognitionService {
     }
 
     public String determineGender(String fullName) throws IOException {
-        return strategy.determineGender(getNames(fullName));
+        return strategy.determineGender(getNames(fullName)).toString();
     }
 
     private List<String> getNames(String fullName) {

@@ -1,5 +1,6 @@
 package pl.jedro.recognitionApp.strategies;
 
+import pl.jedro.recognitionApp.model.Gender;
 import pl.jedro.recognitionApp.utils.GenderReader;
 
 import java.io.BufferedReader;
@@ -8,17 +9,17 @@ import java.io.IOException;
 import java.util.List;
 
 public class FirstTokenStrategy implements RecognitionStrategy {
-    public String determineGender(List<String> names) throws IOException {
+    public Gender determineGender(List<String> names) throws IOException {
         GenderReader maleReader = new GenderReader(new BufferedReader(
                 new FileReader("src/main/resources/static/maleTokens.txt")));
         GenderReader femaleReader = new GenderReader(new BufferedReader(
                 new FileReader("src/main/resources/static/femaleTokens.txt")));
         if (nameMatchesToken(names, maleReader)) {
-            return "MALE";
+            return Gender.MALE;
         } else if (nameMatchesToken(names,femaleReader)) {
-            return "FEMALE";
+            return Gender.FEMALE;
         }
-        return "INCONCLUSIVE";
+        return Gender.INCONCLUSIVE;
     }
 
 //    private boolean nameMatchesToken(List<String> names, GenderReader reader) throws IOException {
