@@ -2,6 +2,7 @@ package pl.jedro.recognitionApp.strategies;
 
 import pl.jedro.recognitionApp.model.Gender;
 import pl.jedro.recognitionApp.model.GenderToken;
+import pl.jedro.recognitionApp.utils.GenderTokensBufferedReader;
 import pl.jedro.recognitionApp.utils.GenderTokensReader;
 
 import java.io.FileReader;
@@ -27,9 +28,9 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
     }
 
     private void countTokensMatchingNames(List<String> names) throws IOException {
-        GenderTokensReader maleReader = new GenderTokensReader(
+        GenderTokensReader maleReader = new GenderTokensBufferedReader(
                 new FileReader("src/main/resources/static/maleTokens.txt"));
-        GenderTokensReader femaleReader = new GenderTokensReader(
+        GenderTokensReader femaleReader = new GenderTokensBufferedReader(
                 new FileReader("src/main/resources/static/femaleTokens.txt"));
         males = (int) supplyStreamOfTokens(maleReader).get().filter(token -> names.contains(token.getName())).count();
         females = (int) supplyStreamOfTokens(femaleReader).get().filter(token -> names.contains(token.getName())).count();

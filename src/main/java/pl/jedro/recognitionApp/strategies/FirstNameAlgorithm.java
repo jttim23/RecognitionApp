@@ -1,6 +1,7 @@
 package pl.jedro.recognitionApp.strategies;
 
 import pl.jedro.recognitionApp.model.Gender;
+import pl.jedro.recognitionApp.utils.GenderTokensBufferedReader;
 import pl.jedro.recognitionApp.utils.GenderTokensReader;
 
 import java.io.FileReader;
@@ -10,10 +11,10 @@ import java.util.List;
 public class FirstNameAlgorithm implements RecognitionAlgorithm {
 
     public Gender determineGender(List<String> names) throws IOException {
-        GenderTokensReader maleReader = new GenderTokensReader(
+        GenderTokensReader maleReader = new GenderTokensBufferedReader(
                 new FileReader("src/main/resources/static/maleTokens.txt"));
 
-        GenderTokensReader femaleReader = new GenderTokensReader(
+        GenderTokensReader femaleReader = new GenderTokensBufferedReader(
                 new FileReader("src/main/resources/static/femaleTokens.txt"));
         if (firstNameMatchesToken(names, maleReader)) {
             return Gender.MALE;
