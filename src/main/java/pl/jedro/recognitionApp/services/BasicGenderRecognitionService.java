@@ -1,15 +1,15 @@
 package pl.jedro.recognitionApp.services;
 
-import pl.jedro.recognitionApp.strategies.RecognitionStrategy;
+import pl.jedro.recognitionApp.strategies.RecognitionAlgorithm;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
 public class BasicGenderRecognitionService implements GenderRecognitionService {
-    private RecognitionStrategy strategy;
+    private RecognitionAlgorithm strategy;
 
-    public BasicGenderRecognitionService(RecognitionStrategy strategy) {
+    public BasicGenderRecognitionService(RecognitionAlgorithm strategy) {
         this.strategy = strategy;
     }
 
