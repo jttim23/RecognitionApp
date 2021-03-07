@@ -7,8 +7,11 @@ import pl.jedro.recognitionApp.utils.GenderTokensReader;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class AllNamesAlgorithm implements RecognitionAlgorithm {
@@ -18,7 +21,7 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
 
     @Override
     public Gender determineGender(List<String> names) throws IOException {
-        countTokensMatchingNames(names);
+       countTokensMatchingNames(names);
         if (males > females) {
             return Gender.MALE;
         }
@@ -40,4 +43,5 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
     private Supplier<Stream<GenderToken>> supplyStreamOfTokens(GenderTokensReader reader) {
         return reader::getStreamTokens;
     }
+
 }

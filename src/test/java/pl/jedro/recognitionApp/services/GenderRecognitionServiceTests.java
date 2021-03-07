@@ -3,9 +3,12 @@ package pl.jedro.recognitionApp.services;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import pl.jedro.recognitionApp.controllers.MainController;
+import pl.jedro.recognitionApp.model.Gender;
 import pl.jedro.recognitionApp.strategies.AllNamesAlgorithm;
 import pl.jedro.recognitionApp.strategies.FirstNameAlgorithm;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class GenderRecognitionServiceTests {
@@ -14,62 +17,76 @@ public class GenderRecognitionServiceTests {
 
     @BeforeEach
     void setUp() {
-        FirstNameAlgorithm firstNameAlgorithm = new FirstNameAlgorithm();
-        AllNamesAlgorithm allNamesAlgorithm = new AllNamesAlgorithm();
-        firstNameService = new BasicGenderRecognitionService(firstNameAlgorithm);
-        allNamesService = new BasicGenderRecognitionService(allNamesAlgorithm);
+        firstNameService = new BasicGenderRecognitionService();
+        firstNameService.setAlgorithm(new FirstNameAlgorithm());
+        allNamesService = new BasicGenderRecognitionService();
+        allNamesService.setAlgorithm(new AllNamesAlgorithm());
+    }
+    @Test
+    void responsesWithListOfAllMaleTokens() throws FileNotFoundException {
+        Assertions.assertEquals(3, firstNameService.getListOfMaleTokens().size());
+    }
+    @Test
+    void responsesWithListOfAllFemaleTokens() throws FileNotFoundException {
+        Assertions.assertEquals(3, allNamesService.getListOfFemaleTokens().size());
     }
     @Test
     void throwExceptionWhenNameIsBlank() {
-        String name="";
-        Assertions.assertThrows(IllegalArgumentException.class,() -> firstNameService.determineGender(name));
-        Assertions.assertThrows(IllegalArgumentException.class,() -> allNamesService.determineGender(name));
+        String name = "";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> firstNameService.determineGender(name));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> allNamesService.determineGender(name));
     }
+
     @Test
     void throwExceptionWhenNameIsOnlyWhiteSpaces() {
-        String name="     ";
-        Assertions.assertThrows(IllegalArgumentException.class,() -> firstNameService.determineGender(name));
-        Assertions.assertThrows(IllegalArgumentException.class,() -> allNamesService.determineGender(name));
+        String name = "     ";
+        Assertions.assertThrows(IllegalArgumentException.class, () -> firstNameService.determineGender(name));
+        Assertions.assertThrows(IllegalArgumentException.class, () -> allNamesService.determineGender(name));
 
     }
+
     @Test
-    void recognizeFemale() throws IOException {
+    void recognizeFemaleByFirstName() throws IOException {
 
         String name = " Anna  Jan   Zbigniew";
-        Assertions.assertEquals("FEMALE", firstNameService.determineGender(name));
+        Assertions.assertEquals(Gender.FEMALE, firstNameService.determineGender(name));
 
     }
 
     @Test
-    void recognizeMale() throws IOException {
+    void recognizeMaleByFirstName() throws IOException {
         String name = "Jan Jan Zbigniew";
-        Assertions.assertEquals("MALE", firstNameService.determineGender(name));
+        Assertions.assertEquals(Gender.MALE, firstNameService.determineGender(name));
     }
 
     @Test
-    void recognizeInconclusive() throws IOException {
+    void recognizeInconclusiveByFirstName() throws IOException {
         String name = "Rokita Jan Zbigniew";
-        Assertions.assertEquals("INCONCLUSIVE", firstNameService.determineGender(name));
+        Assertions.assertEquals(Gender.INCONCLUSIVE, firstNameService.determineGender(name));
     }
+
     @Test
     void recognizeFemaleByAllNames() throws IOException {
 
         String name = " Anna  Jan   Maria";
-        Assertions.assertEquals("FEMALE", allNamesService.determineGender(name));
+
+        Assertions.assertEquals(Gender.FEMALE, allNamesService.determineGender(name));
 
     }
 
     @Test
     void recognizeMaleByAllNames() throws IOException {
         String name = "Jan Maria Zbigniew";
-        Assertions.assertEquals("MALE", allNamesService.determineGender(name));
+
+        Assertions.assertEquals(Gender.MALE, allNamesService.determineGender(name));
     }
 
     @Test
     void recognizeInconclusiveByAllNames() throws IOException {
         String name = "Rokita Wójcik Imp";
         String secName = "Maria Jan";
-        Assertions.assertEquals("INCONCLUSIVE", allNamesService.determineGender(name));
-        Assertions.assertEquals("INCONCLUSIVE", allNamesService.determineGender(secName));
+
+        Assertions.assertEquals(Gender.INCONCLUSIVE, allNamesService.determineGender(name));
+        Assertions.assertEquals(Gender.INCONCLUSIVE, allNamesService.determineGender(secName));
     }
 }

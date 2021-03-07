@@ -38,4 +38,12 @@ public class AllNamesAlgorithmTests {
         names.add("Rokita");
         Assertions.assertEquals(Gender.INCONCLUSIVE, strategy.determineGender(names));
     }
+    @Test
+    void responseCorrectlyIfSameNameIsDoubled() throws IOException {
+        names.add("Maria");
+        names.add("Maria");
+        names.add("Jan");
+        names.add("Zbigniew");
+        Assertions.assertEquals(Gender.FEMALE, strategy.determineGender(names));
+    }
 }

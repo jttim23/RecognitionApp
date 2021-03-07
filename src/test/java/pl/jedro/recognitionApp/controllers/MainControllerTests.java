@@ -7,10 +7,16 @@ import java.io.FileNotFoundException;
 
 public class MainControllerTests {
 
+
     @Test
     void responsesWithListOfAllMaleTokens() throws FileNotFoundException {
         MainController mainController = new MainController();
         Assertions.assertEquals(3, mainController.getListOfMaleTokens().size());
+    }
+    @Test
+    void responsesWithListOfAllFemaleTokens() throws FileNotFoundException {
+        MainController mainController = new MainController();
+        Assertions.assertEquals(3, mainController.getListOfFemaleTokens().size());
     }
 
 }

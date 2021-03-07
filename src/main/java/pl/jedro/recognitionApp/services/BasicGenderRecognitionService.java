@@ -1,5 +1,6 @@
 package pl.jedro.recognitionApp.services;
 
+import pl.jedro.recognitionApp.model.Gender;
 import pl.jedro.recognitionApp.model.GenderToken;
 import pl.jedro.recognitionApp.strategies.RecognitionAlgorithm;
 import pl.jedro.recognitionApp.utils.GenderTokensBufferedReader;
@@ -13,14 +14,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class BasicGenderRecognitionService implements GenderRecognitionService {
-    private RecognitionAlgorithm strategy;
-
-    public BasicGenderRecognitionService(RecognitionAlgorithm strategy) {
-        this.strategy = strategy;
+    private RecognitionAlgorithm algorithm;
+    @Override
+    public void setAlgorithm(RecognitionAlgorithm algorithm) {
+        this.algorithm = algorithm;
     }
-
-    public String determineGender(String fullName) throws IOException {
-        return strategy.determineGender(getNames(fullName)).toString();
+    @Override
+    public Gender determineGender(String fullName) throws IOException {
+        return algorithm.determineGender(splitNameToArray(fullName));
     }
 
     @Override
@@ -29,7 +30,13 @@ public class BasicGenderRecognitionService implements GenderRecognitionService {
         return reader.getStreamTokens().collect(Collectors.toList());
     }
 
-    private List<String> getNames(String fullName) {
+    @Override
+    public List<GenderToken> getListOfFemaleTokens() throws FileNotFoundException {
+        GenderTokensReader reader = new GenderTokensBufferedReader(new FileReader("src/main/resources/static/femaleTokens.txt"));
+        return reader.getStreamTokens().collect(Collectors.toList());
+    }
+
+    private List<String> splitNameToArray(String fullName) {
         if (fullName.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }

@@ -10,4 +10,7 @@ public class RecognitionAppApplication {
 		SpringApplication.run(RecognitionAppApplication.class, args);
 	}
 
+
+
+
 }
