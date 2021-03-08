@@ -14,7 +14,7 @@ public class FirstNameAlgorithmTests {
 
     @BeforeEach
     void setUp() {
-        strategy = new FirstNameAlgorithm();
+        strategy = new FirstNameAlgorithm("src/main/resources/static/maleTokens.txt","src/main/resources/static/femaleTokens.txt");
         names = new ArrayList<>();
     }
     @Test

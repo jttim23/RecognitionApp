@@ -3,24 +3,31 @@ package pl.jedro.recognitionApp.services;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import pl.jedro.recognitionApp.controllers.MainController;
 import pl.jedro.recognitionApp.model.Gender;
+import pl.jedro.recognitionApp.strategies.AlgorithmFactory;
+import pl.jedro.recognitionApp.strategies.AlgorithmName;
 import pl.jedro.recognitionApp.strategies.AllNamesAlgorithm;
 import pl.jedro.recognitionApp.strategies.FirstNameAlgorithm;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+@SpringBootTest(properties={"males.path=src/main/resources/static/maleTokens.txt",
+        "females.path=src/main/resources/static/femaleTokens.txt"})
 public class GenderRecognitionServiceTests {
+    @Autowired
+    private AlgorithmFactory algorithmFactory;
     private BasicGenderRecognitionService firstNameService;
     private BasicGenderRecognitionService allNamesService;
 
     @BeforeEach
     void setUp() {
         firstNameService = new BasicGenderRecognitionService();
-        firstNameService.setAlgorithm(new FirstNameAlgorithm());
+        firstNameService.setAlgorithm(algorithmFactory.findAlgorithm(AlgorithmName.FirstNameAlgorithm));
         allNamesService = new BasicGenderRecognitionService();
-        allNamesService.setAlgorithm(new AllNamesAlgorithm());
+        allNamesService.setAlgorithm(algorithmFactory.findAlgorithm(AlgorithmName.AllNamesAlgorithm));
     }
     @Test
     void responsesWithListOfAllMaleTokens() throws FileNotFoundException {

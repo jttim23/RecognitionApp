@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface RecognitionAlgorithm {
     Gender determineGender(List<String> names) throws IOException;
+    AlgorithmName getAlgorithmName();
 }

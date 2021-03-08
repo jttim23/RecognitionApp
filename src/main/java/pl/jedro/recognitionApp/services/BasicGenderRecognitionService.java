@@ -1,5 +1,6 @@
 package pl.jedro.recognitionApp.services;
 
+import org.springframework.stereotype.Service;
 import pl.jedro.recognitionApp.model.Gender;
 import pl.jedro.recognitionApp.model.GenderToken;
 import pl.jedro.recognitionApp.strategies.RecognitionAlgorithm;
@@ -13,12 +14,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Service
 public class BasicGenderRecognitionService implements GenderRecognitionService {
+
     private RecognitionAlgorithm algorithm;
+
     @Override
     public void setAlgorithm(RecognitionAlgorithm algorithm) {
         this.algorithm = algorithm;
     }
+
     @Override
     public Gender determineGender(String fullName) throws IOException {
         return algorithm.determineGender(splitNameToArray(fullName));
