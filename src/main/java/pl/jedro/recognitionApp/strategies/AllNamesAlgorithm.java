@@ -1,22 +1,17 @@
 package pl.jedro.recognitionApp.strategies;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import pl.jedro.recognitionApp.model.Gender;
-import pl.jedro.recognitionApp.model.GenderToken;
 import pl.jedro.recognitionApp.utils.GenderTokensBufferedReader;
 import pl.jedro.recognitionApp.utils.GenderTokensReader;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
-import java.util.function.Supplier;
-import java.util.stream.Stream;
 
 @Component
-@AllArgsConstructor
 @NoArgsConstructor
 public class AllNamesAlgorithm implements RecognitionAlgorithm {
     @Value("${males.path}")
@@ -33,9 +28,9 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
     public Gender determineGender(List<String> names) throws IOException {
         int females = 0;
         int males = 0;
-        males = countTokensMatchingNames(names, new GenderTokensBufferedReader(
+        males += countTokensMatchingNames(names, new GenderTokensBufferedReader(
                 new FileReader(maleTokensPath)));
-        females = countTokensMatchingNames(names, new GenderTokensBufferedReader(
+        females += countTokensMatchingNames(names, new GenderTokensBufferedReader(
                 new FileReader(femaleTokensPath)));
         if (males > females) {
             return Gender.MALE;
@@ -46,7 +41,7 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
     }
 
 
-    private int countTokensMatchingNames(List<String> names, GenderTokensReader reader)  {
+    private int countTokensMatchingNames(List<String> names, GenderTokensReader reader) {
 
         return (int) reader.getTokensStream().distinct().filter(token -> names.contains(token.getName().toLowerCase())).count();
     }

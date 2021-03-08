@@ -14,7 +14,6 @@ public interface GenderRecognitionService {
     Gender determineGender(String fullName) throws IOException;
     void setAlgorithm(RecognitionAlgorithm algorithm);
 
-    List<GenderToken> getListOfMaleTokens() throws FileNotFoundException;
+    List<GenderToken> getListOfTokens(String path) throws FileNotFoundException;
 
-    List<GenderToken> getListOfFemaleTokens() throws FileNotFoundException;
 }

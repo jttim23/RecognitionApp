@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 @SpringBootTest(properties = {"males.path=src/main/resources/static/maleTokens.txt",
         "females.path=src/main/resources/static/femaleTokens.txt"})
-public class FirstNameAlgorithmTests {
+public class FirstNameAlgorithmV2Tests {
     @Autowired
-    private FirstNameAlgorithm strategy;
+    private FirstNameAlgorithmV2 strategy;
     private ArrayList<String> names;
 
     @BeforeEach

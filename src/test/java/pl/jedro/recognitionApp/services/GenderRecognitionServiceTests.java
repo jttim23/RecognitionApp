@@ -5,12 +5,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.jedro.recognitionApp.controllers.MainController;
 import pl.jedro.recognitionApp.model.Gender;
 import pl.jedro.recognitionApp.strategies.AlgorithmFactory;
 import pl.jedro.recognitionApp.strategies.AlgorithmName;
-import pl.jedro.recognitionApp.strategies.AllNamesAlgorithm;
-import pl.jedro.recognitionApp.strategies.FirstNameAlgorithm;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -31,11 +28,11 @@ public class GenderRecognitionServiceTests {
     }
     @Test
     void responsesWithListOfAllMaleTokens() throws FileNotFoundException {
-        Assertions.assertEquals(3, firstNameService.getListOfMaleTokens().size());
+        Assertions.assertEquals(3, firstNameService.getListOfTokens("src/main/resources/static/maleTokens.txt").size());
     }
     @Test
     void responsesWithListOfAllFemaleTokens() throws FileNotFoundException {
-        Assertions.assertEquals(3, allNamesService.getListOfFemaleTokens().size());
+        Assertions.assertEquals(3, allNamesService.getListOfTokens("src/main/resources/static/femaleTokens.txt").size());
     }
     @Test
     void throwExceptionWhenNameIsBlank() {

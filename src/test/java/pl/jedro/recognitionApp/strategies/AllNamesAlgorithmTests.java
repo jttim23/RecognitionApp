@@ -3,18 +3,21 @@ package pl.jedro.recognitionApp.strategies;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import pl.jedro.recognitionApp.model.Gender;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
+@SpringBootTest(properties = {"males.path=src/main/resources/static/maleTokens.txt",
+        "females.path=src/main/resources/static/femaleTokens.txt"})
 public class AllNamesAlgorithmTests {
+    @Autowired
     private AllNamesAlgorithm strategy;
     private ArrayList<String> names;
 
     @BeforeEach
     void setUp() {
-        strategy = new AllNamesAlgorithm("src/main/resources/static/maleTokens.txt","src/main/resources/static/femaleTokens.txt");
         names = new ArrayList<>();
     }
 
