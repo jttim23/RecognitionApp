@@ -1,0 +1,1 @@
+run with : mvn spring-boot:run -Dspring-boot.run.arguments="--males.path={pathToTokens} --females.path={pathToTokens}"

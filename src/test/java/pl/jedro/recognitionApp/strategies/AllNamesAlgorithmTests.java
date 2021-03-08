@@ -14,7 +14,7 @@ public class AllNamesAlgorithmTests {
 
     @BeforeEach
     void setUp() {
-        strategy = new AllNamesAlgorithm();
+        strategy = new AllNamesAlgorithm("src/main/resources/static/maleTokens.txt","src/main/resources/static/femaleTokens.txt");
         names = new ArrayList<>();
     }
 
@@ -38,4 +38,5 @@ public class AllNamesAlgorithmTests {
         names.add("Rokita");
         Assertions.assertEquals(Gender.INCONCLUSIVE, strategy.determineGender(names));
     }
+
 }
