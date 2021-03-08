@@ -24,22 +24,22 @@ public class FirstNameAlgorithmV2 implements RecognitionAlgorithm{
     }
     @Override
     public Gender determineGender(List<String> names) throws IOException {
-        if (firstNameMatchesToken(names,maleTokensPath)) {
+        if (firstNameMatchesToken(names.get(0),maleTokensPath)) {
             return Gender.MALE;
-        } else if (firstNameMatchesToken(names,femaleTokensPath)) {
+        } else if (firstNameMatchesToken(names.get(0),femaleTokensPath)) {
             return Gender.FEMALE;
         } else {
             return Gender.INCONCLUSIVE;
         }
     }
-    public boolean firstNameMatchesToken(List<String> names, String path) throws IOException {
-        BufferedReader b = new BufferedReader(new FileReader(path));
+    public boolean firstNameMatchesToken(String name, String path) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
         String line;
-        int flag=1;
+        boolean nameNotFound=true;
         boolean result = false;
-        while ((line= b.readLine())!=null&&flag>0){
-                if (line.toLowerCase().equals(names.get(0).toLowerCase())){
-                    flag--;
+        while ((line= bufferedReader.readLine())!=null&&nameNotFound){
+                if (line.toLowerCase().equals(name.toLowerCase())){
+                    nameNotFound=false;
                     result= true;
                 }
         }

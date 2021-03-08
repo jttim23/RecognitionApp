@@ -9,11 +9,13 @@ import pl.jedro.recognitionApp.model.Gender;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+
 @SpringBootTest(properties = {"males.path=src/main/resources/static/maleTokens.txt",
         "females.path=src/main/resources/static/femaleTokens.txt"})
-public class AllNamesAlgorithmTests {
+class AllNamesAlgorithmV2Test {
     @Autowired
-    private AllNamesAlgorithm strategy;
+    private AllNamesAlgorithmV2 strategy;
     private ArrayList<String> names;
 
     @BeforeEach
@@ -26,6 +28,7 @@ public class AllNamesAlgorithmTests {
         names.add("jan");
         Assertions.assertEquals(Gender.MALE, strategy.determineGender(names));
     }
+
     @Test
     void responseFemaleIfMoreFemaleTokenMatches() throws IOException {
         names.add("maria");
@@ -38,6 +41,19 @@ public class AllNamesAlgorithmTests {
         Assertions.assertEquals(Gender.INCONCLUSIVE, strategy.determineGender(names));
     }
 
-
+    @Test
+    void responseFemaleIfFemaleNamesDoubled() throws IOException {
+        names.add("maria");
+        names.add("maria");
+        names.add("jan");
+        Assertions.assertEquals(Gender.FEMALE, strategy.determineGender(names));
+    }
+    @Test
+    void responseMaleIfMaleNamesDoubled() throws IOException {
+        names.add("jan");
+        names.add("maria");
+        names.add("jan");
+        Assertions.assertEquals(Gender.MALE, strategy.determineGender(names));
+    }
 
 }

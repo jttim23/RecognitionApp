@@ -26,24 +26,21 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
 
     @Override
     public Gender determineGender(List<String> names) throws IOException {
-        int females = 0;
-        int males = 0;
-        males += countTokensMatchingNames(names, new GenderTokensBufferedReader(
+
+        int maleTokens = countTokensMatchingNames(names, new GenderTokensBufferedReader(
                 new FileReader(maleTokensPath)));
-        females += countTokensMatchingNames(names, new GenderTokensBufferedReader(
+       int femaleTokens
+               = countTokensMatchingNames(names, new GenderTokensBufferedReader(
                 new FileReader(femaleTokensPath)));
-        if (males > females) {
+        if (maleTokens > femaleTokens) {
             return Gender.MALE;
         }
-        if (females > males) {
+        if (femaleTokens > maleTokens) {
             return Gender.FEMALE;
         } else return Gender.INCONCLUSIVE;
     }
 
-
     private int countTokensMatchingNames(List<String> names, GenderTokensReader reader) {
-
         return (int) reader.getTokensStream().distinct().filter(token -> names.contains(token.getName().toLowerCase())).count();
     }
-
 }
