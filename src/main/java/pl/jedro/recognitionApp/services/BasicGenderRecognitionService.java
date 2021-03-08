@@ -32,19 +32,20 @@ public class BasicGenderRecognitionService implements GenderRecognitionService {
     @Override
     public List<GenderToken> getListOfMaleTokens() throws FileNotFoundException {
         GenderTokensReader reader = new GenderTokensBufferedReader(new FileReader("src/main/resources/static/maleTokens.txt"));
-        return reader.getStreamTokens().collect(Collectors.toList());
+        return reader.getTokensStream().collect(Collectors.toList());
     }
 
     @Override
     public List<GenderToken> getListOfFemaleTokens() throws FileNotFoundException {
         GenderTokensReader reader = new GenderTokensBufferedReader(new FileReader("src/main/resources/static/femaleTokens.txt"));
-        return reader.getStreamTokens().collect(Collectors.toList());
+        return reader.getTokensStream().collect(Collectors.toList());
     }
 
     private List<String> splitNameToArray(String fullName) {
         if (fullName.trim().isEmpty()) {
             throw new IllegalArgumentException();
         }
-        return Arrays.asList(fullName.trim().split(" "));
+
+        return Arrays.asList(fullName.trim().toLowerCase().split(" "));
     }
 }

@@ -25,14 +25,14 @@ public class FirstNameAlgorithmTests {
 
     @Test
     void responseMaleIfMaleTokenMatchesOnlyFirstName() throws IOException {
-        names.add("Jan");
+        names.add("jan");
         names.add("rokita");
         Assertions.assertEquals(Gender.MALE, strategy.determineGender(names));
     }
     @Test
     void responseMaleIfMaleTokenMatchesFirstName() throws IOException {
 
-        names.add("Jan");
+        names.add("jan");
         Assertions.assertEquals(Gender.MALE, strategy.determineGender(names));
     }
     @Test
@@ -43,7 +43,7 @@ public class FirstNameAlgorithmTests {
 
     @Test
     void responseFemaleIfFemaleTokenMatchesFirstName() throws IOException {
-        names.add("Maria");
+        names.add("maria");
         Assertions.assertEquals(Gender.FEMALE, strategy.determineGender(names));
     }
 }

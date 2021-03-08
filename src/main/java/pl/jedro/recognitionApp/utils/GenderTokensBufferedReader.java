@@ -13,7 +13,7 @@ public class GenderTokensBufferedReader extends BufferedReader implements Gender
         super(in);
     }
 
-    public Stream<GenderToken> getStreamTokens() {
+    public Stream<GenderToken> getTokensStream() {
         return super.lines().map(this::mapper);
     }
 

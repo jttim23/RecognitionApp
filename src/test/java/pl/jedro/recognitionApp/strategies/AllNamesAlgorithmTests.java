@@ -20,23 +20,27 @@ public class AllNamesAlgorithmTests {
 
     @Test
     void responseMaleIfMoreMaleTokenMatches() throws IOException {
-        names.add("Jan");
+        names.add("jan");
         Assertions.assertEquals(Gender.MALE, strategy.determineGender(names));
     }
     @Test
     void responseFemaleIfMoreFemaleTokenMatches() throws IOException {
-        names.add("Maria");
+        names.add("maria");
         Assertions.assertEquals(Gender.FEMALE, strategy.determineGender(names));
     }
+
     @Test
     void responseInconclusiveIfNoTokensMatches() throws IOException {
-        names.add("Rokita");
+        names.add("rokita");
         Assertions.assertEquals(Gender.INCONCLUSIVE, strategy.determineGender(names));
     }
+
     @Test
     void responseInconclusiveWhenNumberOfTokensIsTheSame() throws IOException {
-        names.add("Rokita");
-        Assertions.assertEquals(Gender.INCONCLUSIVE, strategy.determineGender(names));
+        names.add("maria");
+        names.add("maria");
+        names.add("jan");
+        Assertions.assertEquals(Gender.FEMALE, strategy.determineGender(names));
     }
 
 }

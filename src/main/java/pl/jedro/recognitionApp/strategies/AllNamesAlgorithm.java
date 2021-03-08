@@ -24,17 +24,19 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
     @Value("${females.path}")
     private String femaleTokensPath;
 
+    @Override
+    public AlgorithmName getAlgorithmName() {
+        return AlgorithmName.AllNamesAlgorithm;
+    }
 
     @Override
     public Gender determineGender(List<String> names) throws IOException {
-        GenderTokensReader maleReader = new GenderTokensBufferedReader(
-                new FileReader(maleTokensPath));
-        GenderTokensReader femaleReader = new GenderTokensBufferedReader(
-                new FileReader(femaleTokensPath));
         int females = 0;
         int males = 0;
-        males = countTokensMatchingNames(names, maleReader);
-        females = countTokensMatchingNames(names, femaleReader);
+        males = countTokensMatchingNames(names, new GenderTokensBufferedReader(
+                new FileReader(maleTokensPath)));
+        females = countTokensMatchingNames(names, new GenderTokensBufferedReader(
+                new FileReader(femaleTokensPath)));
         if (males > females) {
             return Gender.MALE;
         }
@@ -43,20 +45,10 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
         } else return Gender.INCONCLUSIVE;
     }
 
-    @Override
-    public AlgorithmName getAlgorithmName() {
-        return AlgorithmName.AllNamesAlgorithm;
-    }
 
-    private int countTokensMatchingNames(List<String> names, GenderTokensReader reader) throws IOException {
+    private int countTokensMatchingNames(List<String> names, GenderTokensReader reader)  {
 
-
-        return (int) supplyStreamOfTokens(reader).get().filter(token -> names.contains(token.getName())).count();
-
-    }
-
-    private Supplier<Stream<GenderToken>> supplyStreamOfTokens(GenderTokensReader reader) {
-        return reader::getStreamTokens;
+        return (int) reader.getTokensStream().distinct().filter(token -> names.contains(token.getName().toLowerCase())).count();
     }
 
 }

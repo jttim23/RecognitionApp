@@ -11,6 +11,7 @@ import pl.jedro.recognitionApp.utils.GenderTokensReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
@@ -19,33 +20,25 @@ public class FirstNameAlgorithm implements RecognitionAlgorithm {
     private String maleTokensPath;
     @Value("${females.path}")
     private String femaleTokensPath;
-
+    @Override
+    public AlgorithmName getAlgorithmName() {
+        return AlgorithmName.FirstNameAlgorithm;
+    }
     @Override
     public Gender determineGender(List<String> names) throws IOException {
-
-        GenderTokensReader maleReader = new GenderTokensBufferedReader(
-
-                new FileReader(maleTokensPath));
-
-        GenderTokensReader femaleReader = new GenderTokensBufferedReader(
-                new FileReader(femaleTokensPath));
-        if (firstNameMatchesToken(names, maleReader)) {
+        if (firstNameMatchesToken(names.get(0), new GenderTokensBufferedReader(
+                new FileReader(maleTokensPath)))) {
             return Gender.MALE;
-
-        } else if (firstNameMatchesToken(names, femaleReader)) {
+        } else if (firstNameMatchesToken(names.get(0), new GenderTokensBufferedReader(
+                new FileReader(femaleTokensPath)))) {
             return Gender.FEMALE;
         } else {
             return Gender.INCONCLUSIVE;
         }
     }
 
-    @Override
-    public AlgorithmName getAlgorithmName() {
-        return AlgorithmName.FirstNameAlgorithm;
-    }
-
-    private boolean firstNameMatchesToken(List<String> names, GenderTokensReader reader) {
-        return reader.getStreamTokens().anyMatch(token -> token.getName().toLowerCase().equals(names.get(0).toLowerCase()));
+    private boolean firstNameMatchesToken(String name, GenderTokensReader reader) {
+        return reader.getTokensStream().anyMatch(token -> token.getName().toLowerCase().equals(name));
     }
 
 }
