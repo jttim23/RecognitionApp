@@ -14,4 +14,4 @@ This is app build for recruitment
 ```mvn package```
 <p>4. Run fat-jar using command:
 
-```java -jar target/recognitionApp-0.0.1-SNAPSHOT.jar```
+```java -jar target/recognitionApp-0.0.1.jar```

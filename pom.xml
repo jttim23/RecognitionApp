@@ -10,7 +10,7 @@
     </parent>
     <groupId>pl.jedro</groupId>
     <artifactId>recognitionApp</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>recognitionApp</name>
     <description>Recognition App</description>
     <properties>
