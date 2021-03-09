@@ -16,12 +16,12 @@ import java.util.stream.Collectors;
 
 @Service
 @Primary
-public class BasicGenderRecognitionService implements GenderRecognitionService {
+public class BasicGenderRecognitionServiceV2 implements GenderRecognitionService {
 
     private GenderTokensReader readerV2;
     private RecognitionAlgorithm algorithm;
 
-    public BasicGenderRecognitionService(GenderTokensReader readerV2) {
+    public BasicGenderRecognitionServiceV2(GenderTokensReader readerV2) {
         this.readerV2 = readerV2;
     }
 

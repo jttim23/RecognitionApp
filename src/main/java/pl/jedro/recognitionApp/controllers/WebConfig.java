@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addFormatters(FormatterRegistry registry) {
-        registry.addConverter(new StringToGenderConverter());
-        registry.addConverter(new StringToAlgorithmNameConverter());
+        registry.addConverter(new StringInLowerCaseToGenderConverter());
+        registry.addConverter(new StringInLowerCaseToAlgorithmNameConverter());
     }
 }

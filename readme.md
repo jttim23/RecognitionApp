@@ -3,6 +3,7 @@ This is app build for recruitment
 <p>run with : mvn spring-boot:run -Dspring-boot.run.arguments="--males.path={pathToTokens} --females.path={pathToTokens}"
 
 # Setup
+
 <p>1. Please run git command in your destination folder:
 
  ```git clone https://github.com/jttim23/RecognitionApp.git```
@@ -15,3 +16,6 @@ This is app build for recruitment
 <p>4. Run fat-jar using command:
 
 ```java -jar target/recognitionApp-0.0.1.jar```
+<p>*Or just directly download jar file from github release and run:
+
+```java -jar recognitionApp.jar```
