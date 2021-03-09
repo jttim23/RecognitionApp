@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.jedro.recognitionApp.model.Gender;
+import pl.jedro.recognitionApp.model.Genders;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,33 +25,33 @@ public class FirstNameAlgorithmTests {
     @Test
     void responseInconclusiveWhenNoTokensMatchesFirstName() throws IOException {
         names.add("Rokita");
-        Assertions.assertEquals(Gender.INCONCLUSIVE, strategy.determineGender(names));
+        Assertions.assertEquals(Genders.INCONCLUSIVE, strategy.determineGender(names));
     }
 
     @Test
     void responseMaleIfMaleTokenMatchesOnlyFirstName() throws IOException {
         names.add("jan");
         names.add("rokita");
-        Assertions.assertEquals(Gender.MALE, strategy.determineGender(names));
+        Assertions.assertEquals(Genders.MALE, strategy.determineGender(names));
     }
 
     @Test
     void responseMaleIfMaleTokenMatchesFirstName() throws IOException {
 
         names.add("jan");
-        Assertions.assertEquals(Gender.MALE, strategy.determineGender(names));
+        Assertions.assertEquals(Genders.MALE, strategy.determineGender(names));
     }
 
     @Test
     void responseCorrectlyWhenNameInLowerCase() throws IOException {
         names.add("anna");
-        Assertions.assertEquals(Gender.FEMALE, strategy.determineGender(names));
+        Assertions.assertEquals(Genders.FEMALE, strategy.determineGender(names));
     }
 
     @Test
     void responseFemaleIfFemaleTokenMatchesFirstName() throws IOException {
         names.add("maria");
-        Assertions.assertEquals(Gender.FEMALE, strategy.determineGender(names));
+        Assertions.assertEquals(Genders.FEMALE, strategy.determineGender(names));
     }
 }
 

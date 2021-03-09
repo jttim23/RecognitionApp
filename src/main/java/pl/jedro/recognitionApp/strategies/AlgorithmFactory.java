@@ -9,19 +9,23 @@ import java.util.Set;
 
 @Component
 public class AlgorithmFactory {
-    private Map<AlgorithmName, RecognitionAlgorithm> algorithms;
+    private Map<AlgorithmNames, RecognitionAlgorithm> algorithmsMap;
 
     @Autowired
-    public AlgorithmFactory(Set<RecognitionAlgorithm> algorithmSet) {
-        createStrategy(algorithmSet);
+    public AlgorithmFactory(Set<RecognitionAlgorithm> algorithmsSet) {
+
+        createAlgorithm(algorithmsSet);
     }
 
-    public RecognitionAlgorithm findAlgorithm(AlgorithmName algorithmName) {
-        return algorithms.get(algorithmName);
-    }
-    private void createStrategy(Set<RecognitionAlgorithm> algorithmSet) {
-        algorithms = new HashMap<AlgorithmName, RecognitionAlgorithm>();
+    private void createAlgorithm(Set<RecognitionAlgorithm> algorithmSet) {
+        algorithmsMap = new HashMap<>();
         algorithmSet.forEach(
-                algorithm ->algorithms.put(algorithm.getAlgorithmName(), algorithm));
+                algorithm -> algorithmsMap.put(algorithm.getAlgorithmName(), algorithm));
     }
+
+    public RecognitionAlgorithm findAlgorithm(AlgorithmNames algorithmName) {
+        return algorithmsMap.get(algorithmName);
+    }
+
+
 }
