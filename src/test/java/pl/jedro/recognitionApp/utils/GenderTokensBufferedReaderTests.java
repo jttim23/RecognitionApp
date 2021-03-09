@@ -1,36 +1,29 @@
 package pl.jedro.recognitionApp.utils;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import pl.jedro.recognitionApp.exceptions.PathNotSpecifiedException;
 
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 
+@SpringBootTest(properties={"males.path=src/main/resources/static/maleTokens.txt",
+        "females.path=src/main/resources/static/femaleTokens.txt"})
 public class GenderTokensBufferedReaderTests {
-    private FileReader femaleTokens;
-    private FileReader emptyFemaleTokens;
-
-    @BeforeEach
-    void setUp() throws FileNotFoundException {
-
-        femaleTokens = new FileReader("src/main/resources/static/femaleTokens.txt");
-        emptyFemaleTokens = new FileReader("src/main/resources/static/emptyFemaleTokens.txt");
-
+@Autowired
+GenderTokensReader reader;
+    @Test
+    void throwsPathNotSpecifiedException() {
+        GenderTokensReader reader = new GenderTokensBufferedReader();
+        Assertions.assertThrows(PathNotSpecifiedException.class, reader::getMaleTokensStream);
     }
-
-//    @Test
-//    void shouldThrowIOExceptionWhenFileEmpty() {
-//        Assertions.assertThrows(IOException.class, () -> new GenderTokensReader(new BufferedReader(emptyFemaleTokens))
-//                .getAllTokens());
-//    }
-
-
-//    @Test
-//    void shouldReturnAllGenderTokens() throws IOException {
-//        Assertions.assertEquals(3, new GenderTokensReader(new BufferedReader(femaleTokens
-//        )).getAllTokens().size());
-//    }
+    @Test
+    void getsFemaleStream() throws FileNotFoundException {
+        Assertions.assertNotEquals(null,reader.getFemaleTokensStream());
+    }
+    @Test
+    void getsMaleStream() throws FileNotFoundException {
+        Assertions.assertNotEquals(null,reader.getMaleTokensStream());
+    }
 }

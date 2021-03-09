@@ -1,51 +1,44 @@
 package pl.jedro.recognitionApp.strategies;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.jedro.recognitionApp.model.Gender;
-import pl.jedro.recognitionApp.utils.GenderTokensBufferedReader;
+import pl.jedro.recognitionApp.model.GenderToken;
+import pl.jedro.recognitionApp.model.Genders;
 import pl.jedro.recognitionApp.utils.GenderTokensReader;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.FileNotFoundException;
 import java.util.List;
-@AllArgsConstructor
+import java.util.stream.Stream;
+
+
 @NoArgsConstructor
 @Component
 public class FirstNameAlgorithm implements RecognitionAlgorithm {
-    @Value("${males.path}")
-    private String maleTokensPath;
-    @Value("${females.path}")
-    private String femaleTokensPath;
+
+    @Autowired
+    GenderTokensReader readerV2;
 
     @Override
-    public Gender determineGender(List<String> names) throws IOException {
+    public AlgorithmNames getAlgorithmName() {
+        return AlgorithmNames.FIRST_NAME_ALGORITHM;
+    }
 
-        GenderTokensReader maleReader = new GenderTokensBufferedReader(
+    @Override
+    public Genders determineGender(List<String> names) throws FileNotFoundException {
 
-                new FileReader(maleTokensPath));
-
-        GenderTokensReader femaleReader = new GenderTokensBufferedReader(
-                new FileReader(femaleTokensPath));
-        if (firstNameMatchesToken(names, maleReader)) {
-            return Gender.MALE;
-
-        } else if (firstNameMatchesToken(names, femaleReader)) {
-            return Gender.FEMALE;
+        if (firstNameMatchesToken(names.get(0), readerV2.getMaleTokensStream())) {
+            return Genders.MALE;
+        } else if (firstNameMatchesToken(names.get(0), readerV2.getFemaleTokensStream())) {
+            return Genders.FEMALE;
         } else {
-            return Gender.INCONCLUSIVE;
+            return Genders.INCONCLUSIVE;
         }
     }
 
-    @Override
-    public AlgorithmName getAlgorithmName() {
-        return AlgorithmName.FirstNameAlgorithm;
+    private boolean firstNameMatchesToken(String name, Stream<GenderToken> stream) {
+        return stream.anyMatch(token -> token.getName().toLowerCase().equals(name));
     }
 
-    private boolean firstNameMatchesToken(List<String> names, GenderTokensReader reader) {
-        return reader.getStreamTokens().anyMatch(token -> token.getName().toLowerCase().equals(names.get(0).toLowerCase()));
-    }
 
 }
