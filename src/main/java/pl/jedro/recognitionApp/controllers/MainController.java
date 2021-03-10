@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import pl.jedro.recognitionApp.model.GenderToken;
-import pl.jedro.recognitionApp.model.Genders;
+import pl.jedro.recognitionApp.models.GenderToken;
+import pl.jedro.recognitionApp.models.Genders;
 import pl.jedro.recognitionApp.services.GenderRecognitionService;
 import pl.jedro.recognitionApp.strategies.AlgorithmFactory;
 import pl.jedro.recognitionApp.strategies.AlgorithmNames;
@@ -28,16 +28,13 @@ public class MainController {
 
     @GetMapping("api/lists")
     @ResponseStatus(HttpStatus.OK)
-    public List<String> getListOfAllTokens(@RequestParam(value = "gender") Genders gender) throws FileNotFoundException {
-
-        System.out.println(gender.toString());
+    public List<String> getListOfAllTokens(@RequestParam("gender") Genders gender) throws FileNotFoundException {
         return service.getListOfTokens(gender.toString()).stream().map(GenderToken::getName).collect(Collectors.toList());
-
     }
 
     @GetMapping("/api/recognize")
     @ResponseStatus(HttpStatus.OK)
-    public Genders getGenderRecognizedByFirstName(@RequestParam("name") String name, @RequestParam(value = "algorithm") AlgorithmNames algorithmName) throws IOException {
+    public Genders getGenderRecognizedByFirstName(@RequestParam("name") String name, @RequestParam("algorithm") AlgorithmNames algorithmName) throws IOException {
         setProperAlgorithmToService(algorithmName);
         return service.determineGender(name);
     }

@@ -2,7 +2,7 @@ package pl.jedro.recognitionApp.strategies;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import pl.jedro.recognitionApp.model.Genders;
+import pl.jedro.recognitionApp.models.Genders;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -43,7 +43,8 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
         int namesToFind = names.size();
         int result = 0;
         while (((line = tokensReader.readLine()) != null) && (namesToFind > 0)) {
-            if (nameSet.contains(line.toLowerCase())) {
+           line =line.trim().toLowerCase();
+            if ((nameSet.contains(line))) {
                 namesToFind--;
                 result++;
             }

@@ -1,7 +1,7 @@
 package pl.jedro.recognitionApp.services;
 
-import pl.jedro.recognitionApp.model.GenderToken;
-import pl.jedro.recognitionApp.model.Genders;
+import pl.jedro.recognitionApp.models.GenderToken;
+import pl.jedro.recognitionApp.models.Genders;
 import pl.jedro.recognitionApp.strategies.RecognitionAlgorithm;
 
 import java.io.FileNotFoundException;
