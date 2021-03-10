@@ -1,0 +1,297 @@
+[33mcommit 96cd41af6ef80d2cd2cbd1d5202e4d70a31c3454[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;33mtag: v1.5[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: jedro <jttim23@gmail.com>
+Date:   Wed Mar 10 15:10:53 2021 +0100
+
+    changed test files path
+
+[33mcommit 577c713b9a3c7925d1b9914f1e2a7060d6b8313a[m[33m ([m[1;33mtag: v.1.5[m[33m)[m
+Merge: 38f19ce 400e0f6
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Wed Mar 10 14:27:41 2021 +0100
+
+    Merge pull request #8 from jttim23/dev
+    
+    Dev
+
+[33mcommit 400e0f6fd98197ceab9421907e90a7f7442324e2[m[33m ([m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m
+Author: jedro <jttim23@gmail.com>
+Date:   Wed Mar 10 14:22:51 2021 +0100
+
+    refactored Exception
+
+[33mcommit db014003601f949f95f2a7b32db9738d22b9c820[m
+Author: jedro <jttim23@gmail.com>
+Date:   Wed Mar 10 13:36:48 2021 +0100
+
+    refactored readme
+
+[33mcommit 7e099433200d62aacebf11efbe0d6830192e7b8d[m
+Author: jedro <jttim23@gmail.com>
+Date:   Wed Mar 10 12:39:09 2021 +0100
+
+    refactored algorithms to avoid empty strings
+
+[33mcommit 0965fc528be6c82987b6228a98c5c4729e80eb0f[m
+Author: jedro <jttim23@gmail.com>
+Date:   Wed Mar 10 11:53:55 2021 +0100
+
+    added arg exception handling
+
+[33mcommit e6f229a7d00642f2f5fc4725b01c0d92d3d37222[m
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Wed Mar 10 11:37:14 2021 +0100
+
+    Update readme.md
+
+[33mcommit a8d58645638f680236ac2962cae0ea23952657f9[m
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Wed Mar 10 11:36:41 2021 +0100
+
+    Update readme.md
+
+[33mcommit 870642ead189b70abaf53297466d22b919b282a5[m
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Wed Mar 10 11:36:09 2021 +0100
+
+    Update readme.md
+
+[33mcommit f326fd208925203cac653dbda3a275f333ef344d[m
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Wed Mar 10 11:35:14 2021 +0100
+
+    Update readme.md
+
+[33mcommit 876bbcfeb1533b58a53fac445bbf5a88069ddc09[m
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Wed Mar 10 11:33:29 2021 +0100
+
+    Update readme.md
+
+[33mcommit 317a37a4a3b9d66a47f9e1eca2cbb6080709eaff[m
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Wed Mar 10 11:33:07 2021 +0100
+
+    Update readme.md
+
+[33mcommit cf46d16556289c1c0b0955a8d0410efb7377323d[m
+Author: jedro <jttim23@gmail.com>
+Date:   Wed Mar 10 11:32:15 2021 +0100
+
+    refactored readme
+
+[33mcommit 38f19ce80c7fcbc5ba1e2e95cdf379871aa5ed92[m
+Merge: b9dd679 629c47f
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Wed Mar 10 11:26:11 2021 +0100
+
+    Merge pull request #7 from jttim23/dev
+    
+    refactored strategies
+
+[33mcommit 629c47fd9abc8a48f1d725bff4e4b76b12943ef9[m
+Author: jedro <jttim23@gmail.com>
+Date:   Wed Mar 10 11:14:59 2021 +0100
+
+    refactored strategies
+
+[33mcommit b9dd679ce2724c8734af202e97e89fb925c519e4[m
+Author: jedro <jttim23@gmail.com>
+Date:   Tue Mar 9 22:02:04 2021 +0100
+
+    refactored service
+
+[33mcommit 498082817c3b65a5e5b9aed9f4eb16d11f3f63a7[m[33m ([m[1;33mtag: v.1.4[m[33m)[m
+Merge: e25c571 29d5b57
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Tue Mar 9 21:42:33 2021 +0100
+
+    Merge pull request #6 from jttim23/dev
+    
+    refactored pom
+
+[33mcommit 29d5b571b5e8a0c59fbb8a2bf67adcc973776365[m
+Author: jedro <jttim23@gmail.com>
+Date:   Tue Mar 9 21:41:53 2021 +0100
+
+    refactored pom
+
+[33mcommit e25c571caaa8dd227590f6bc1a87b38e002f0cb0[m[33m ([m[1;33mtag: v1.3[m[33m, [m[1;33mtag: v1.2[m[33m, [m[1;33mtag: v1.1[m[33m, [m[1;33mtag: v.1.1[m[33m)[m
+Merge: 8e5091c 279501a
+Author: jedro <jttim23@gmail.com>
+Date:   Tue Mar 9 21:18:34 2021 +0100
+
+    Merge branch 'master' of github.com:jttim23/RecognitionApp
+
+[33mcommit 8e5091ccc67d1454a022d365d63784389caa469c[m[33m ([m[1;33mtag: v.1.0[m[33m)[m
+Author: jedro <jttim23@gmail.com>
+Date:   Tue Mar 9 21:17:24 2021 +0100
+
+    added github actions
+
+[33mcommit 279501aa62593e83ab19219eaac4b0cc160d9a48[m
+Merge: 59b49ee fedc23c
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Tue Mar 9 21:16:20 2021 +0100
+
+    Merge pull request #2 from jttim23/dev
+    
+    Developed app
+
+[33mcommit fedc23cbd574257a29f70bbf153c4d58a5330a8d[m[33m ([m[1;33mtag: v.0.1[m[33m)[m
+Author: jedro <jttim23@gmail.com>
+Date:   Tue Mar 9 21:09:12 2021 +0100
+
+    app can be packaged
+
+[33mcommit a272e21e88249ad2f035e108d1661d28ac2c58d6[m
+Merge: 9abb385 10f8845
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Tue Mar 9 19:37:13 2021 +0100
+
+    Merge pull request #5 from jttim23/handleExceptions
+    
+    refactored first name strategy
+
+[33mcommit 10f88453809033d12f8f2be6adc533a2152b09ca[m[33m ([m[1;31morigin/handleExceptions[m[33m, [m[1;32mhandleExceptions[m[33m)[m
+Author: jedro <jttim23@gmail.com>
+Date:   Tue Mar 9 19:34:20 2021 +0100
+
+    created Exception handling, refectored algorithms
+
+[33mcommit 8f3f352e8922854ee2fd829f2e430df79f4539ff[m
+Author: jedro <jttim23@gmail.com>
+Date:   Mon Mar 8 22:17:05 2021 +0100
+
+    created all names algorithm v2
+
+[33mcommit 971a01fbd34cc9e5012408e22ba33e2102c70cda[m
+Author: jedro <jttim23@gmail.com>
+Date:   Mon Mar 8 17:42:27 2021 +0100
+
+    created first name strategy v2
+
+[33mcommit a90a0e904c5cbe4745f01004ef5a7986855409cb[m
+Author: jedro <jttim23@gmail.com>
+Date:   Mon Mar 8 15:32:36 2021 +0100
+
+    refactored first name strategy
+
+[33mcommit 9abb385ef0166328278e42f98e15173cd53f318f[m
+Merge: 93f24f9 be09f6e
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Mon Mar 8 14:22:05 2021 +0100
+
+    Merge pull request #3 from jttim23/createController
+    
+    Created controller
+
+[33mcommit be09f6ea97c56831ff64cdfd035f9c4e5da6fc8a[m[33m ([m[1;31morigin/createController[m[33m, [m[1;32mcreateController[m[33m)[m
+Author: jedro <jttim23@gmail.com>
+Date:   Mon Mar 8 14:21:21 2021 +0100
+
+    created readme file
+
+[33mcommit 26ec52959c08fc55540193ec52b2838d8bd5199f[m
+Author: jedro <jttim23@gmail.com>
+Date:   Mon Mar 8 14:03:13 2021 +0100
+
+    refactored Algorithms so can access env vars
+
+[33mcommit 1892843b12a8b107ee976ce212c1a95792d97c89[m
+Author: jedro <jttim23@gmail.com>
+Date:   Sun Mar 7 23:54:13 2021 +0100
+
+    created Controller and Endpoints
+
+[33mcommit 933f58093e3d98cd26b75a8a01c316986f8b78dc[m
+Author: jedro <jttim23@gmail.com>
+Date:   Sun Mar 7 18:15:52 2021 +0100
+
+    created controller
+
+[33mcommit e0a4ceb743af7d63d83827edab2f5d7a931d382c[m
+Author: jedro <jttim23@gmail.com>
+Date:   Sun Mar 7 17:43:54 2021 +0100
+
+    refactored reader architecture
+
+[33mcommit 93f24f9e84b35f00745e3b39b50ebed8af06778d[m
+Merge: 59b49ee 63b3ae2
+Author: jttim23 <49094950+jttim23@users.noreply.github.com>
+Date:   Sun Mar 7 17:12:58 2021 +0100
+
+    Merge pull request #1 from jttim23/serviceCreate
+    
+    createdService
+
+[33mcommit 63b3ae2ac9264f022a3d195fea84372d7add0692[m[33m ([m[1;31morigin/serviceCreate[m[33m, [m[1;32mserviceCreate[m[33m)[m
+Author: jedro <jttim23@gmail.com>
+Date:   Sun Mar 7 17:09:15 2021 +0100
+
+    created second recognition algorithm
+
+[33mcommit 984877d14444e5fe0b4f644517b55071da6eaaf0[m
+Author: jedro <jttim23@gmail.com>
+Date:   Sun Mar 7 15:07:14 2021 +0100
+
+    genders as enum
+
+[33mcommit fa37deff22f89930e6d3ecdb2513dce0fc987503[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 18:27:16 2021 +0100
+
+    refactored strategy to use Streams
+
+[33mcommit 667c28a41e019ca82e2617ab994a3327ce6b2e62[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 17:18:10 2021 +0100
+
+    refactoredRecognitionStrategy
+
+[33mcommit ea1d82e74b99393993b059d34c5a0bbf6124d806[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 15:57:30 2021 +0100
+
+    created recognition service
+
+[33mcommit d843fd9166124dae444a9bad47c4d4beabf62d40[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 15:42:23 2021 +0100
+
+    strategy responses correctly
+
+[33mcommit 22443ab5debce692efa8aa35ac1f2f712395ef8d[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 15:07:57 2021 +0100
+
+    created first strategy
+
+[33mcommit 8f86a89158af07b93f1dd180a9b47211d26aa4c0[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 14:50:12 2021 +0100
+
+    refactored Gender Reader
+
+[33mcommit 488452725ded74d041a63017742de9a8c2d3c235[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 13:39:34 2021 +0100
+
+    reader Reads All tokens
+
+[33mcommit 2044dd63c5b97d0872a01b4e8b8ccefdb8b31eb3[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 13:06:11 2021 +0100
+
+    little refactoring
+
+[33mcommit c6088148adb2cb2633c2ab57e4ed55e5d60213ff[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 12:39:47 2021 +0100
+
+    createdReader
+
+[33mcommit 59b49eeb9681d50b436554c55cf7a50257bf6ff5[m
+Author: jedro <jttim23@gmail.com>
+Date:   Fri Mar 5 11:33:47 2021 +0100
+
+    initial commit
