@@ -4,7 +4,7 @@
 * [General info](#general-info)
 * [Setup](#setup)
 
-##General info
+## General info
 <p>  This is app build for recruitment that can detect gender by given name. 
 <p>  Gender detection algorithm is fairly simple and is based on a list of female and male tokens,
  that are packaged within JAR, in the form of two flat files.
