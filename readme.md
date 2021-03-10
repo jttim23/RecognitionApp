@@ -11,11 +11,11 @@
 <p>  Each line contains a separate token. 
 <p>  For each name, the app responds with gender ("MALE” , "FEMALE") or “INCONCLUSIVE” when not recognized.
 
-####Gender detection algorithm is implemented in two variants: 
+#### Gender detection algorithm is implemented in two variants: 
 <p> 1. Only first token of name is checked.
 <p> 2. All tokens are checked and majority rule is used.
 
-####Application exposes two HTTP endpoints: 
+#### Application exposes two HTTP endpoints: 
 <p>
 
 1. **GET:** **/api/recognize** with parameters *'name'* and *'algorithm'* for using the gender guessing with selected variant.
