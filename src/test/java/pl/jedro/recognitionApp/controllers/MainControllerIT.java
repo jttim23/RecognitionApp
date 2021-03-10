@@ -68,12 +68,12 @@ public class MainControllerIT {
     @Test
     void respondsWithListOfFemaleTokens() {
         given().queryParam("gender", "FEMALE").when()
-                .get("http://localhost/api/lists").then().statusCode(200).assertThat().body("",hasSize(3)).body("",hasItem("Anna"));
+                .get("http://localhost/api/lists").then().statusCode(200).assertThat().body("",hasItem("Anna"));
     }
     @Test
     void respondsWithListOfMaleTokens() {
         given().queryParam("gender", "MALE").when()
-                .get("http://localhost/api/lists").then().statusCode(200).assertThat().body("",hasSize(3)).body("",hasItem("Jan"));
+                .get("http://localhost/api/lists").then().statusCode(200).assertThat().body("",hasItem("Jan"));
     }
 
 }

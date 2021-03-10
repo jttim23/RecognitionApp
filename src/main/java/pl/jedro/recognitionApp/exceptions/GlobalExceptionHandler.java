@@ -9,6 +9,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalTime;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -24,21 +25,22 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
 
     }
-
-    @ExceptionHandler(BadParametersException.class)
-    public ResponseEntity<Object> handleBadParametersException(Exception exception, WebRequest request) {
+    @ExceptionHandler(IOException.class)
+    public ResponseEntity<Object> handleIOException(Exception exception, WebRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalTime.now());
-        body.put("message", "Please check provided parameters");
+        body.put("message", "Please correctness of tokens file");
+        body.put("exception message", exception.getMessage());
         return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
 
     }
+
 
     @ExceptionHandler(FileNotFoundException.class)
     public ResponseEntity<Object> handleFileNotFoundException(Exception exception, WebRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalTime.now());
-        body.put("message", "Please check if token file in path");
+        body.put("message", "Please check if file with tokens in path");
         return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
 
     }

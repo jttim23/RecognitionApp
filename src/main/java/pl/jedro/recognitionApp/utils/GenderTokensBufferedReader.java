@@ -12,7 +12,6 @@ import java.io.FileReader;
 import java.util.stream.Stream;
 
 @Component
-@Primary
 public class GenderTokensBufferedReader implements GenderTokensReader {
     @Value("${males.path}")
     private String maleTokensPath;

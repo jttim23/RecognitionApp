@@ -40,7 +40,6 @@ public class BasicGenderRecognitionService implements GenderRecognitionService {
         switch (gender.toLowerCase()) {
             case "male":
                 return getListOfMaleTokens();
-
             case "female":
                 return getListOfFemaleTokens();
             default:
@@ -49,7 +48,6 @@ public class BasicGenderRecognitionService implements GenderRecognitionService {
     }
 
     private List<GenderToken> getListOfMaleTokens() throws FileNotFoundException {
-
         return readerV2.getMaleTokensStream().collect(Collectors.toCollection(ArrayList::new));
     }
 
