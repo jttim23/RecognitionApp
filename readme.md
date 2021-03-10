@@ -6,7 +6,7 @@
 * [Run](#run)
 
 ## General info
-<p>  This is app build for recruitment that can detect gender by given name. 
+<p>  This is app build as recruitment task it can detect gender by given name. 
 <p>  Gender detection algorithm is fairly simple and is based on a list of female and male tokens,
  that are packaged within JAR, in the form of two flat files.
 <p>  Each line contains a separate token. 
@@ -29,7 +29,7 @@ find only one male and one female token.
         * FIRST_NAME_ALGORITHM - for algorithm that check only first token of name
 
         * ALL_NAMES_ALGORITHM - for algorithm that check only all tokens of name
-2. **GET:** */api/lists* with query param *@RequestParam("gender")* for returning List of available tokens for each gender.
+2. **GET:** **/api/lists** with query param *@RequestParam("gender")* for returning List of available tokens for each gender.
     * Parameter *'gender'* must be one of two(letter case irrelevant):
         * MALE - for list of male tokens
         * FEMALE - for list of female tokens
@@ -45,7 +45,7 @@ find only one male and one female token.
 `cd RecognitionApp`
 <p>3. Run maven command to create executable jar file.
 
-mvn package`
+`mvn package`
 <p>4. Run fat-jar using command:
 
 `java -jar target/recognitionApp-0.0.1.jar`
