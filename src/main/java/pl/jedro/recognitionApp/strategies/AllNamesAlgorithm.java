@@ -1,22 +1,23 @@
 package pl.jedro.recognitionApp.strategies;
 
-import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import pl.jedro.recognitionApp.model.GenderToken;
 import pl.jedro.recognitionApp.model.Genders;
-import pl.jedro.recognitionApp.utils.GenderTokensReader;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.HashSet;
 import java.util.List;
-import java.util.stream.Stream;
+import java.util.Set;
 
 @Component
-@NoArgsConstructor
 public class AllNamesAlgorithm implements RecognitionAlgorithm {
+    @Value("${males.path}")
+    private String maleTokensPath;
 
-    @Autowired
-    private GenderTokensReader readerV2;
+    @Value("${females.path}")
+    private String femaleTokensPath;
 
     @Override
     public AlgorithmNames getAlgorithmName() {
@@ -25,8 +26,8 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
 
     @Override
     public Genders determineGender(List<String> names) throws IOException {
-        int maleTokens = countTokensMatchingNames(names, readerV2.getMaleTokensStream());
-        int femaleTokens = countTokensMatchingNames(names, readerV2.getFemaleTokensStream());
+        int maleTokens = countTokensMatchingNames(names, maleTokensPath);
+        int femaleTokens = countTokensMatchingNames(names, femaleTokensPath);
         if (maleTokens > femaleTokens) {
             return Genders.MALE;
         }
@@ -35,7 +36,21 @@ public class AllNamesAlgorithm implements RecognitionAlgorithm {
         } else return Genders.INCONCLUSIVE;
     }
 
-    private int countTokensMatchingNames(List<String> names, Stream<GenderToken> stream) {
-        return (int) stream.distinct().filter(token -> names.contains(token.getName().toLowerCase())).count();
+    private int countTokensMatchingNames(List<String> names, String path) throws IOException {
+        Set<String> nameSet = new HashSet<>(names);
+        BufferedReader tokensReader = new BufferedReader(new FileReader(path));
+        String line;
+        int namesToFind = names.size();
+        int result = 0;
+        while (((line = tokensReader.readLine()) != null) && (namesToFind > 0)) {
+            if (nameSet.contains(line.toLowerCase())) {
+                namesToFind--;
+                result++;
+            }
+        }
+        return result;
     }
+
+
 }
+

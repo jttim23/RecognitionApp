@@ -13,7 +13,6 @@ public class AlgorithmFactory {
 
     @Autowired
     public AlgorithmFactory(Set<RecognitionAlgorithm> algorithmsSet) {
-
         createAlgorithm(algorithmsSet);
     }
 

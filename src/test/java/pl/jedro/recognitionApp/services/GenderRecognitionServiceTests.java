@@ -12,8 +12,8 @@ import pl.jedro.recognitionApp.utils.GenderTokensReader;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-@SpringBootTest(properties={"males.path=src/main/resources/static/maleTokens.txt",
-        "females.path=src/main/resources/static/femaleTokens.txt"})
+@SpringBootTest(properties={"males.path=src/test/java/resources/static/maleTokens.txt",
+        "females.path=src/test/java/resources/static/femaleTokens.txt"})
 public class GenderRecognitionServiceTests {
     @Autowired
     private AlgorithmFactory algorithmFactory;
@@ -90,7 +90,6 @@ public class GenderRecognitionServiceTests {
 
     @Test
     void recognizeInconclusiveByAllNames() throws IOException {
-      //  String name = "Rokita Wójcik Imp";
        String secName = "jan Maria";
 
         //Assertions.assertEquals(Gender.INCONCLUSIVE, allNamesService.determineGender(name));
