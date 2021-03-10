@@ -14,7 +14,9 @@
 
 #### Gender detection algorithm is implemented in two variants: 
 <p> 1. Only first token of name is checked.
-<p> 2. All tokens are checked and majority rule is used.
+<p> 2. All tokens are checked and majority rule is used. Current implementation of this algorithm uses HashSet 
+so it doesn't allow to send duplicated names e.g. "John Mary John" will respond with "INCONCLUSIVE" as it wil 
+find only one male and one female token.
 
 #### Application exposes two HTTP endpoints: 
 <p>
