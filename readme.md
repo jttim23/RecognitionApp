@@ -49,8 +49,10 @@ mvn package`
 <p>   *Or just directly download jar file from github release and run:
 
 `java -jar recognitionApp.jar`
+<p>
 
-#Run
+## Run
+
 <p>  You can run with additional command line args : 
 
 `-males.path={path to male tokens} --females.path={path to female tokens}`
