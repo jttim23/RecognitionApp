@@ -56,7 +56,7 @@ mvn package`
 
 <p>  You can run with additional command line args : 
 
-`-males.path={path to male tokens} --females.path={path to female tokens}`
+`--males.path={path to male tokens} --females.path={path to female tokens}`
 <p>  
 
 **Default** path is */src/main/resources/static/maleTokens.txt*
