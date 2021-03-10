@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import pl.jedro.recognitionApp.RecognitionAppApplication;
-import pl.jedro.recognitionApp.model.Genders;
+import pl.jedro.recognitionApp.models.Genders;
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.hasItem;

@@ -2,8 +2,9 @@ package pl.jedro.recognitionApp.services;
 
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
-import pl.jedro.recognitionApp.model.GenderToken;
-import pl.jedro.recognitionApp.model.Genders;
+import pl.jedro.recognitionApp.exceptions.NameIsEmptyException;
+import pl.jedro.recognitionApp.models.GenderToken;
+import pl.jedro.recognitionApp.models.Genders;
 import pl.jedro.recognitionApp.strategies.RecognitionAlgorithm;
 import pl.jedro.recognitionApp.utils.GenderTokensReader;
 
@@ -59,8 +60,9 @@ public class BasicGenderRecognitionService implements GenderRecognitionService {
 
     private List<String> splitNameToArray(String fullName) {
         if (fullName.trim().isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new NameIsEmptyException();
         }
-        return Arrays.asList(fullName.trim().toLowerCase().split(" "));
+        List<String> names= Arrays.asList(fullName.trim().toLowerCase().split(" "));
+        return names.stream().filter(name ->!name.equals("")).collect(Collectors.toList());
     }
 }

@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.jedro.recognitionApp.exceptions.PathNotSpecifiedException;
 
 import java.io.FileNotFoundException;
 
@@ -14,11 +13,6 @@ public class GenderTokensBufferedReaderTests {
     @Autowired
     GenderTokensReader reader;
 
-    @Test
-    void throwsPathNotSpecifiedException() {
-        GenderTokensReader reader = new GenderTokensBufferedReader();
-        Assertions.assertThrows(PathNotSpecifiedException.class, reader::getMaleTokensStream);
-    }
 
     @Test
     void getsFemaleStream() throws FileNotFoundException {

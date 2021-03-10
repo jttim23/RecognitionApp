@@ -18,15 +18,6 @@ import java.util.Map;
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
-    @ExceptionHandler(PathNotSpecifiedException.class)
-    public ResponseEntity<Object> handlePathNotSpecifiedException(Exception exception, WebRequest request) {
-        Map<String, Object> body = new LinkedHashMap<>();
-        body.put("timestamp", LocalTime.now());
-        body.put("message", "Please check if path to file is specified");
-        return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
-
-    }
-
     @ExceptionHandler(IOException.class)
     public ResponseEntity<Object> handleIOException(Exception exception, WebRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
@@ -37,11 +28,21 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     }
 
+
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(Exception exception, WebRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
         body.put("timestamp", LocalTime.now());
         body.put("message", "Please provide correct parameters");
+
+        return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.NOT_FOUND);
+
+    }
+    @ExceptionHandler(NameIsEmptyException.class)
+    public ResponseEntity<Object> handleNameIsEmptyException(Exception exception, WebRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalTime.now());
+        body.put("message", "Please provide name");
 
         return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.NOT_FOUND);
 

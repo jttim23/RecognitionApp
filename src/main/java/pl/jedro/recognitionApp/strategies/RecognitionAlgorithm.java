@@ -1,6 +1,6 @@
 package pl.jedro.recognitionApp.strategies;
 
-import pl.jedro.recognitionApp.model.Genders;
+import pl.jedro.recognitionApp.models.Genders;
 
 import java.io.IOException;
 import java.util.List;

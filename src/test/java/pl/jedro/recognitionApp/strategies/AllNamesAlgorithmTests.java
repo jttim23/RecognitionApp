@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import pl.jedro.recognitionApp.model.Genders;
+import pl.jedro.recognitionApp.models.Genders;
 
 import java.io.IOException;
 import java.util.ArrayList;

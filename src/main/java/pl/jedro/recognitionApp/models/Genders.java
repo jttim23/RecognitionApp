@@ -1,4 +1,4 @@
-package pl.jedro.recognitionApp.model;
+package pl.jedro.recognitionApp.models;
 
 public enum Genders {
     MALE, FEMALE, INCONCLUSIVE,

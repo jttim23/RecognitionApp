@@ -1,6 +1,6 @@
 package pl.jedro.recognitionApp.utils;
 
-import pl.jedro.recognitionApp.model.GenderToken;
+import pl.jedro.recognitionApp.models.GenderToken;
 
 import java.io.FileNotFoundException;
 import java.util.stream.Stream;

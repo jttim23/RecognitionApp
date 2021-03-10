@@ -9,7 +9,6 @@ public class StringInLowerCaseToAlgorithmNameConverter implements Converter<Stri
     @Override
     public AlgorithmNames convert(String source) {
         return AlgorithmNames.valueOf(source.toUpperCase());
-
     }
 }
 

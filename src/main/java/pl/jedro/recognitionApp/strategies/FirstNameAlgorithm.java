@@ -3,7 +3,7 @@ package pl.jedro.recognitionApp.strategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import pl.jedro.recognitionApp.model.Genders;
+import pl.jedro.recognitionApp.models.Genders;
 import pl.jedro.recognitionApp.utils.GenderTokensReader;
 
 import java.io.BufferedReader;
@@ -42,7 +42,8 @@ public class FirstNameAlgorithm implements RecognitionAlgorithm {
         String line;
         boolean nameIsFound = false;
         while (((line = tokensReader.readLine()) != null) && (!nameIsFound)) {
-            if (name.equals(line.toLowerCase())) {
+            line =line.trim().toLowerCase();
+            if (name.equals(line)) {
                 nameIsFound = true;
             }
         }

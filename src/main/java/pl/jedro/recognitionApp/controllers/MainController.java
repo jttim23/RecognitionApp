@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import pl.jedro.recognitionApp.model.GenderToken;
-import pl.jedro.recognitionApp.model.Genders;
+import pl.jedro.recognitionApp.models.GenderToken;
+import pl.jedro.recognitionApp.models.Genders;
 import pl.jedro.recognitionApp.services.GenderRecognitionService;
 import pl.jedro.recognitionApp.strategies.AlgorithmFactory;
 import pl.jedro.recognitionApp.strategies.AlgorithmNames;
@@ -29,10 +29,7 @@ public class MainController {
     @GetMapping("api/lists")
     @ResponseStatus(HttpStatus.OK)
     public List<String> getListOfAllTokens(@RequestParam(value = "gender") Genders gender) throws FileNotFoundException {
-
-        System.out.println(gender.toString());
         return service.getListOfTokens(gender.toString()).stream().map(GenderToken::getName).collect(Collectors.toList());
-
     }
 
     @GetMapping("/api/recognize")
