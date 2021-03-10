@@ -7,8 +7,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.FileNotFoundException;
 
-@SpringBootTest(properties = {"males.path=src/main/resources/static/maleTokens.txt",
-        "females.path=src/main/resources/static/femaleTokens.txt"})
+@SpringBootTest(properties = {"males.path=src/test/java/resources/static/maleTokens.txt",
+        "females.path=src/test/java/resources/static/femaleTokens.txt"})
 public class GenderTokensBufferedReaderTests {
     @Autowired
     GenderTokensReader reader;

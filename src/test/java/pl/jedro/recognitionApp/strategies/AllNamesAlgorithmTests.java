@@ -10,8 +10,8 @@ import pl.jedro.recognitionApp.models.Genders;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@SpringBootTest(properties = {"males.path=src/main/resources/static/maleTokens.txt",
-        "females.path=src/main/resources/static/femaleTokens.txt"})
+@SpringBootTest(properties = {"males.path=src/test/java/resources/static/maleTokens.txt",
+        "females.path=src/test/java/resources/static/femaleTokens.txt"})
 public class AllNamesAlgorithmTests {
     @Autowired
     private AllNamesAlgorithm strategy;
