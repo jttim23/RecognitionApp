@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.io.FileNotFoundException;
@@ -25,6 +26,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
 
     }
+
     @ExceptionHandler(IOException.class)
     public ResponseEntity<Object> handleIOException(Exception exception, WebRequest request) {
         Map<String, Object> body = new LinkedHashMap<>();
@@ -35,6 +37,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     }
 
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(Exception exception, WebRequest request) {
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalTime.now());
+        body.put("message", "Please provide correct parameters");
+
+        return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.NOT_FOUND);
+
+    }
 
     @ExceptionHandler(FileNotFoundException.class)
     public ResponseEntity<Object> handleFileNotFoundException(Exception exception, WebRequest request) {

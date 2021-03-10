@@ -1,7 +1,6 @@
 package pl.jedro.recognitionApp.utils;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 import pl.jedro.recognitionApp.exceptions.PathNotSpecifiedException;
 import pl.jedro.recognitionApp.model.GenderToken;

@@ -13,13 +13,12 @@ import java.util.List;
 
 @Component
 public class FirstNameAlgorithm implements RecognitionAlgorithm {
-    @Value("${males.path}")
-    private String maleTokensPath;
-
-    @Value("${females.path}")
-    private String femaleTokensPath;
     @Autowired
     GenderTokensReader readerV2;
+    @Value("${males.path}")
+    private String maleTokensPath;
+    @Value("${females.path}")
+    private String femaleTokensPath;
 
     @Override
     public AlgorithmNames getAlgorithmName() {

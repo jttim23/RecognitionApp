@@ -8,7 +8,7 @@ public class StringInLowerCaseToGenderConverter implements Converter<String, Gen
     @Override
     public Genders convert(String source) {
 
-            return Genders.valueOf(source.toUpperCase());
+        return Genders.valueOf(source.toUpperCase());
 
-        }
     }
+}
