@@ -11,14 +11,13 @@ import java.util.Set;
 public class AlgorithmFactory {
     private Map<AlgorithmNames, RecognitionAlgorithm> algorithmsMap;
 
-    @Autowired
     public AlgorithmFactory(Set<RecognitionAlgorithm> algorithmsSet) {
         createAlgorithm(algorithmsSet);
     }
 
-    private void createAlgorithm(Set<RecognitionAlgorithm> algorithmSet) {
+    private void createAlgorithm(Set<RecognitionAlgorithm> algorithmsSet) {
         algorithmsMap = new HashMap<>();
-        algorithmSet.forEach(
+        algorithmsSet.forEach(
                 algorithm -> algorithmsMap.put(algorithm.getAlgorithmName(), algorithm));
     }
 

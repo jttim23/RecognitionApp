@@ -28,13 +28,13 @@ public class MainController {
 
     @GetMapping("api/lists")
     @ResponseStatus(HttpStatus.OK)
-    public List<String> getListOfAllTokens(@RequestParam(value = "gender") Genders gender) throws FileNotFoundException {
+    public List<String> getListOfAllTokens(@RequestParam("gender") Genders gender) throws FileNotFoundException {
         return service.getListOfTokens(gender.toString()).stream().map(GenderToken::getName).collect(Collectors.toList());
     }
 
     @GetMapping("/api/recognize")
     @ResponseStatus(HttpStatus.OK)
-    public Genders getGenderRecognizedByFirstName(@RequestParam("name") String name, @RequestParam(value = "algorithm") AlgorithmNames algorithmName) throws IOException {
+    public Genders getGenderRecognizedByFirstName(@RequestParam("name") String name, @RequestParam("algorithm") AlgorithmNames algorithmName) throws IOException {
         setProperAlgorithmToService(algorithmName);
         return service.determineGender(name);
     }

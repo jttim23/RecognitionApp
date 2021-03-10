@@ -35,7 +35,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         body.put("timestamp", LocalTime.now());
         body.put("message", "Please provide correct parameters");
 
-        return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
 
     }
     @ExceptionHandler(NameIsEmptyException.class)
@@ -44,7 +44,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         body.put("timestamp", LocalTime.now());
         body.put("message", "Please provide name");
 
-        return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<Object>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
 
     }
 

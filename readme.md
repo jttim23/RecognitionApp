@@ -21,7 +21,7 @@ find only one male and one female token.
 #### Application exposes two HTTP endpoints: 
 <p>
 
-1. **GET:** **/api/recognize** with query params *'name'* and *'algorithm'* for using the gender guessing with selected variant.
+1. **GET:** **/api/recognize** with query params *@RequestParam("name")* and *@RequestParam("algorithm")* for using the gender guessing with selected variant.
 
     * Parameter *'name'* is a single string for which gender recognition would be done e.g. "John Smith"
 
@@ -29,7 +29,7 @@ find only one male and one female token.
         * FIRST_NAME_ALGORITHM - for algorithm that check only first token of name
 
         * ALL_NAMES_ALGORITHM - for algorithm that check only all tokens of name
-2. **GET:** */api/lists* with query param *'gender'* for returning List of available tokens for each gender.
+2. **GET:** */api/lists* with query param *@RequestParam("gender")* for returning List of available tokens for each gender.
     * Parameter *'gender'* must be one of two(letter case irrelevant):
         * MALE - for list of male tokens
         * FEMALE - for list of female tokens
