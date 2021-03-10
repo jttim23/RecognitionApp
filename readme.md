@@ -3,6 +3,7 @@
 ## Table of contents
 * [General info](#general-info)
 * [Setup](#setup)
+* [Run](#run)
 
 ## General info
 <p>  This is app build for recruitment that can detect gender by given name. 
